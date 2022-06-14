@@ -29,7 +29,6 @@ class AuthService {
                 }
             }
         } catch(err) {
-            console.log(err);
             return { status: 500, message: 'An error occured' }
         }
     }
