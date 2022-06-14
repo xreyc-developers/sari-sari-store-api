@@ -4,16 +4,16 @@ dotenv.config();
 
 const connectionString = process.env.DATABASE_URL;
 
+const pool = new Pool({
+    connectionString,
+});
+
 // const pool = new Pool({
 //     host: process.env.DB_HOST,
 //     user: process.env.DB_USERNAME,
 //     password: process.env.DB_PASSWORD,
 //     database: process.env.DB_NAME
 // });
-
-const pool = new Pool({
-    connectionString,
-});
 
 pool.on('connect', () => {
     console.log('Connection Initialize');
