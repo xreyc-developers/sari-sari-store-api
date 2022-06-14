@@ -16,6 +16,8 @@ require('./config/timezone/timezone');
 const mainRoutes = require('./routes/main.routes');
 // AUTHENTICATION ROUTES
 const authRoutes = require('./routes/auth.routes');
+// PROFILE ROUTES
+const profileRoutes = require('./routes/profile.routes');
 // STORE ROUTES
 const storeRoutes = require('./routes/store.routes');
 const storePaymentTypeRoutes = require('./routes/store_payment_type.routes');
@@ -35,16 +37,23 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // ROUTES
+// API INFO
 app.use('', mainRoutes);
 app.use('/api', mainRoutes);
+// AUTHENTICATION
 app.use('/api/auth', authRoutes);
+// PROFILE
+app.use('/api/profile', profileRoutes);
+// STORE
 app.use('/api/store', storeRoutes);
 app.use('/api/store_payment_type', storePaymentTypeRoutes);
 app.use('/api/store_discount', storeDiscountRoutes);
 app.use('/api/store_coupon', storeCouponRoutes);
+// PRODUCT
 app.use('/api/product', productRoutes);
 app.use('/api/product_category', productCategoryRoutes);
 app.use('/api/unit_of_measure', unitOfMeasureRoutes);
+// ORDER
 app.use('/api/order_with_products', orderRoutes);
 
 module.exports = app;
