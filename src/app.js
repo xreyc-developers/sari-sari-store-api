@@ -12,6 +12,9 @@ require('./config/passport/passport-jwt')(passport);
 require('./config/timezone/timezone');
 
 // ROUTE IMPORTS
+// MAIN
+const mainRoutes = require('./routes/main.routes');
+// AUTHENTICATION ROUTES
 const authRoutes = require('./routes/auth.routes');
 // STORE ROUTES
 const storeRoutes = require('./routes/store.routes');
@@ -32,6 +35,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // ROUTES
+app.use('', mainRoutes);
+app.use('/api', mainRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/store', storeRoutes);
 app.use('/api/store_payment_type', storePaymentTypeRoutes);
