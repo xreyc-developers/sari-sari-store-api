@@ -142,7 +142,7 @@ class OrderWithProductTransactionServices {
                     order_id: response.rows[i].order_id,
                     store_id: response.rows[i].store_id,
                     receipt_number: response.rows[i].receipt_number,
-                    grand_total: response.rows[i].grand_total,
+                    grand_total: Number(response.rows[i].grand_total),
                     customer_name: response.rows[i].customer_name,
                     customer_number: response.rows[i].customer_number,
                     customer_address: response.rows[i].customer_address,
@@ -157,9 +157,9 @@ class OrderWithProductTransactionServices {
                     order_id: response.rows[i]['order_id'],
                     product_id: response.rows[i]['product_id'],
                     product_name: response.rows[i]['product_name'],
-                    quantity: response.rows[i]['quantity'],
-                    price: response.rows[i]['price'],
-                    subtotal: response.rows[i]['subtotal']
+                    quantity: Number(response.rows[i]['quantity']),
+                    price: Number(response.rows[i]['price']),
+                    subtotal: Number(response.rows[i]['subtotal'])
                 }
                 orderProductsData.push(orderProductItem);
                 // PUSH THE LAST ITEM IF THIS IS THE LAST ITERATION
@@ -171,6 +171,9 @@ class OrderWithProductTransactionServices {
                 // SET PREVIOUS ID
                 prevOrderId = response.rows[i].order_id;
             }
+
+            console.log(responseData);
+
             return {
                 status: 200,
                 message: 'Success',
