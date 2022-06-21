@@ -6,7 +6,7 @@ const storeCouponController = require('../controllers/store/store_coupons.contro
 
 // STORE COUPON
 router.post('/', jwtAuthentication, storeCouponController.postStoreCouponsController);
-router.post('/', jwtAuthentication, storeCouponController.getStoreCouponController);
+router.post('/all', jwtAuthentication, storeCouponController.getStoreCouponController);
 router.get('/:id', jwtAuthentication, storeCouponController.getStoreCouponsByIdController);
 router.put('/:id', jwtAuthentication, storeCouponController.updateStoreCouponsByIdController);
 router.delete('/:id', jwtAuthentication, storeCouponController.deleteStoreCouponsByIdController);
