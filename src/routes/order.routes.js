@@ -6,7 +6,7 @@ const orderWithProductsController = require('../controllers/order/order.controll
 
 // STORE
 router.post('/', jwtAuthentication, orderWithProductsController.postOrderWithProductsController);
-router.get('/', jwtAuthentication, orderWithProductsController.getOrdersWithProductsController);
+router.post('/', jwtAuthentication, orderWithProductsController.getOrdersWithProductsController);
 // router.get('/:id', jwtAuthentication, storeController.getStoreByIdController);
 router.put('/:id', jwtAuthentication, orderWithProductsController.updateOrderStatusByIdController);
 router.delete('/:id', jwtAuthentication, orderWithProductsController.deleteOrderByIdController);

@@ -6,7 +6,7 @@ const unitOfMeasureController = require('../controllers/product/unit_of_measure.
 
 // UNIT OF MEASURE
 router.post('/', jwtAuthentication, unitOfMeasureController.postUnitOfMeasureController);
-router.get('/', jwtAuthentication, unitOfMeasureController.getUnitOfMeasureController);
+router.post('/', jwtAuthentication, unitOfMeasureController.getUnitOfMeasureController);
 router.get('/:id', jwtAuthentication, unitOfMeasureController.getUnitOfMeasureByIdController);
 router.put('/:id', jwtAuthentication, unitOfMeasureController.updateUnitOfMeasureByIdController);
 router.delete('/:id', jwtAuthentication, unitOfMeasureController.deleteUnitOfMeasureByIdController);

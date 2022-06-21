@@ -6,7 +6,7 @@ const productCategoryController = require('../controllers/product/product_catego
 
 // PRODUCT CATEGORY
 router.post('/', jwtAuthentication, productCategoryController.postProductCategoryController);
-router.get('/', jwtAuthentication, productCategoryController.getProductCategoryController);
+router.post('/', jwtAuthentication, productCategoryController.getProductCategoryController);
 router.get('/:id', jwtAuthentication, productCategoryController.getProductCategoryByIdController);
 router.put('/:id', jwtAuthentication, productCategoryController.updateProductCategoryByIdController);
 router.delete('/:id', jwtAuthentication, productCategoryController.deleteProductCategoryByIdController);
