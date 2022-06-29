@@ -19,8 +19,9 @@ class ProductServices {
                     price,
                     cost,
                     stocks,
-                    low_stock_level
-                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                    low_stock_level,
+                    productUrl
+                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
                 RETURNING product_id`,
                 [
                     obj.store_id,
@@ -31,7 +32,8 @@ class ProductServices {
                     obj.price,
                     obj.cost,
                     obj.stocks,
-                    obj.low_stock_level
+                    obj.low_stock_level,
+                    obj.productUrl
                 ]
             );
             return {
@@ -59,15 +61,20 @@ class ProductServices {
                     products.product_id,
                     products.store_id,
                     products.product_category_id,
+                    product_categories.name,
                     products.name,
                     products.product_code,
                     products.uom_id,
+                    unit_of_measure.name,
                     products.price,
                     products.cost,
                     products.stocks,
-                    products.low_stock_level
+                    products.low_stock_level,
+                    products.productUrl
                 FROM products
                 INNER JOIN stores ON products.store_id = stores.store_id
+                LEFT JOIN product_categories ON products.product_category_id = product_categories.product_category_id
+                LEFT JOIN unit_of_measure ON products.uom_id = unit_of_measure.uom_id
                 WHERE products.name like '%' || $1 || '%'
                 AND stores.user_id = $2
                 AND products.store_id = $3
@@ -123,7 +130,8 @@ class ProductServices {
                     price = $7,
                     cost = $8,
                     stocks = $9,
-                    low_stock_level = $10
+                    low_stock_level = $10,
+                    productUrl = $11
                 WHERE product_id = $1`,
                 [
                     id,
@@ -135,7 +143,8 @@ class ProductServices {
                     obj.price,
                     obj.cost,
                     obj.stocks,
-                    obj.low_stock_level
+                    obj.low_stock_level,
+                    obj.productUrl
                 ]
             );
             return {

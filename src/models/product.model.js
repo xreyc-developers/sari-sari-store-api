@@ -12,7 +12,8 @@ const productSchema = Joi.object({
     price: Joi.number().required(),
     cost: Joi.number().required(),
     stocks: Joi.number().required(),
-    low_stock_level: Joi.number().required()
+    low_stock_level: Joi.number().required(),
+    productUrl: Joi.string()
 });
 const validateProduct = data => productSchema.validate(data);
 
