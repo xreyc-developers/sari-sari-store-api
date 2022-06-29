@@ -10,5 +10,6 @@ CREATE TABLE products (
     price NUMERIC NOT NULL,
     cost NUMERIC NOT NULL,
     stocks NUMERIC,
-    low_stock_level NUMERIC
+    low_stock_level NUMERIC,
+    productUrl VARCHAR
 );
