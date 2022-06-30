@@ -65,7 +65,7 @@ class ProductServices {
                     product_categories.name category_name,
                     products.product_code,
                     products.uom_id,
-                    unit_of_measure.name uom_name,
+                    unit_of_measure.unit uom_name,
                     products.price,
                     products.cost,
                     products.stocks,
