@@ -11,7 +11,9 @@ const Joi = require('joi');
     product_name: Joi.string().required(),
     quantity: Joi.number().required(),
     price: Joi.number().required(),
-    subtotal: Joi.number().required()
+    subtotal: Joi.number().required(),
+    unitname: Joi.string(),
+    productImg: Joi.string()
 });
 
  const orderWithProductsSchema = Joi.object({
