@@ -50,7 +50,9 @@ class OrderWithProductTransactionServices {
                     product_name: obj.productItems[i]['product_name'],
                     quantity: obj.productItems[i]['quantity'],
                     price: obj.productItems[i]['price'],
-                    subtotal: obj.productItems[i]['subtotal']
+                    subtotal: obj.productItems[i]['subtotal'],
+                    unitname: obj.productItems[i]['unitname'],
+                    productImg: obj.productItems[i]['productImg']
                 }
                 if(obj.productItems[i]['order_product_id'] === 0) {
                     const orderProductResponse = await OrderProductServicesInstance.createOrderProduct(orderProductItem);
@@ -114,7 +116,9 @@ class OrderWithProductTransactionServices {
                     order_products.product_name,
                     order_products.quantity,
                     order_products.price,
-                    order_products.subtotal
+                    order_products.subtotal,
+                    order_products.unitname,
+                    order_products.productImg
                 FROM orders
                 INNER JOIN stores ON orders.store_id = stores.store_id
                 INNER JOIN order_products ON orders.order_id = order_products.order_id
@@ -159,7 +163,9 @@ class OrderWithProductTransactionServices {
                     product_name: response.rows[i]['product_name'],
                     quantity: Number(response.rows[i]['quantity']),
                     price: Number(response.rows[i]['price']),
-                    subtotal: Number(response.rows[i]['subtotal'])
+                    subtotal: Number(response.rows[i]['subtotal']),
+                    unitname: response.rows[i]['unitname'],
+                    productImg: response.rows[i]['productImg']
                 }
                 orderProductsData.push(orderProductItem);
                 // PUSH THE LAST ITEM IF THIS IS THE LAST ITERATION
@@ -171,9 +177,7 @@ class OrderWithProductTransactionServices {
                 // SET PREVIOUS ID
                 prevOrderId = response.rows[i].order_id;
             }
-
-            console.log(responseData);
-
+            
             return {
                 status: 200,
                 message: 'Success',

@@ -16,8 +16,10 @@ class OrderProductServices {
                     product_name,
                     quantity,
                     price,
-                    subtotal
-                ) VALUES ($1, $2, $3, $4, $5, $6)
+                    subtotal,
+                    unitname,
+                    productImg
+                ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                 RETURNING order_product_id`,
                 [
                     obj.order_id,
@@ -25,7 +27,9 @@ class OrderProductServices {
                     obj.product_name,
                     obj.quantity,
                     obj.price,
-                    obj.subtotal
+                    obj.subtotal,
+                    obj.unitname,
+                    obj.productImg
                 ]
             );
 
@@ -50,13 +54,17 @@ class OrderProductServices {
                 SET
                     quantity = $2,
                     price = $3,
-                    subtotal = $4
+                    subtotal = $4,
+                    unitname = $5,
+                    productImg = $6
                 WHERE order_product_id = $1`,
                 [
                     id,
                     obj.quantity,
                     obj.price,
-                    obj.subtotal
+                    obj.subtotal,
+                    obj.unitname,
+                    obj.productImg
                 ]
             );
             return {

@@ -7,5 +7,7 @@ CREATE TABLE order_products (
     product_name VARCHAR(255) NOT NULL,
     quantity NUMERIC NOT NULL,
     price NUMERIC NOT NULL,
-    subtotal NUMERIC NOT NULL
+    subtotal NUMERIC NOT NULL,
+    unitname VARCHAR,
+    productImg VARCHAR
 );
