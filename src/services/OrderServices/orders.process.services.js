@@ -118,7 +118,7 @@ class OrderWithProductTransactionServices {
                     order_products.price,
                     order_products.subtotal,
                     order_products.unitname,
-                    order_products.productImg
+                    order_products.productimg
                 FROM orders
                 INNER JOIN stores ON orders.store_id = stores.store_id
                 INNER JOIN order_products ON orders.order_id = order_products.order_id
@@ -165,7 +165,7 @@ class OrderWithProductTransactionServices {
                     price: Number(response.rows[i]['price']),
                     subtotal: Number(response.rows[i]['subtotal']),
                     unitname: response.rows[i]['unitname'],
-                    productImg: response.rows[i]['productImg']
+                    productImg: response.rows[i]['productimg']
                 }
                 orderProductsData.push(orderProductItem);
                 // PUSH THE LAST ITEM IF THIS IS THE LAST ITERATION
@@ -177,7 +177,7 @@ class OrderWithProductTransactionServices {
                 // SET PREVIOUS ID
                 prevOrderId = response.rows[i].order_id;
             }
-            
+
             return {
                 status: 200,
                 message: 'Success',
