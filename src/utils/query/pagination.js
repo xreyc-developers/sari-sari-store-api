@@ -1,2 +1,2 @@
-exports.paginationOffset = (page_number) => (page_number*10) - 10;
-exports.paginationLimit = 10;
+exports.paginationOffset = (page_number) => (page_number*50) - 50;
+exports.paginationLimit = 50;
