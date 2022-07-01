@@ -13,18 +13,12 @@ class OrderWithProductTransactionServices {
      */
     async createOrUpdateOrder(obj) {
         try {
-            // GRAND TOTAL
-            let grand_total = 0;
-            for(let i = 0; i <= obj.productItems.length - 1; i++) { 
-                obj.productItems[i]['subtotal'] = obj.productItems[i]['quantity'] * obj.productItems[i]['price'];
-                grand_total += obj.productItems[i]['subtotal'];
-            }
             // ORDER TO CREATE
             const orderData = {
                 order_id: obj.order_id,
                 store_id: obj.store_id,
                 receipt_number: obj.receipt_number,
-                grand_total: grand_total,
+                grand_total: obj.grand_total,
                 customer_name: obj.customer_name,
                 customer_number: obj.customer_number,
                 customer_address: obj.customer_address,
