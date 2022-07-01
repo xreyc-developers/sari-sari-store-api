@@ -5,7 +5,7 @@ const jwtAuthentication = require('../middlewares/passport/passport-jwt.middlewa
 const profileController = require('../controllers/profile/profiles.controller');
 
 // PRODUCT CATEGORY
-router.get('/:id', jwtAuthentication, profileController.getProfileByIdController);
+router.get('/', jwtAuthentication, profileController.getProfileByIdController);
 router.put('/:id', jwtAuthentication, profileController.updateProfileByIdController);
 router.delete('/:id', jwtAuthentication, profileController.deleteProfileByIdController);
 

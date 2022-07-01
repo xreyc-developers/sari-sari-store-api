@@ -13,14 +13,8 @@ const ProfileServicesServiceInstance = new ProfileServices();
  */
 exports.getProfileByIdController = async (req, res) => {
     try {
-        const validatedParameters = CommonModel.validateInteger({ value: req.params.id });
-        if(validatedParameters.error) return res.status(500).json({ status: 500, message: 'Bad request' })
-        // GET
-        const profileId = validatedParameters.value.value;
-        const response = await ProfileServicesServiceInstance.getProfileById(profileId);
         // CHECK IF USER OWNER
-        const UserResourceInstance = new UserResource(res, response.data.user_id);
-        if(!UserResourceInstance.isResourceOwner()) return res.status(500).json({ status: 500, message: 'Bad request' })
+        const response = await ProfileServicesServiceInstance.getProfileById(res.locals.user.user_id);
         // RETURN REQUEST
         res.status(201).json(response);
     } catch (err) {
